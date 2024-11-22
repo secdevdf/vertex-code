@@ -73,7 +73,8 @@
 <!-- Seletor de Serviços -->
 <div style="margin-top:-50px" class="service-select">
     <select id="serviceSelect" onchange="displayCards()">
-        <option value="desenvolvimento" selected>Serviços de Desenvolvimento</option>
+        <option value="hospedagem" selected>Serviços de Hospedagem</option>
+        <option value="desenvolvimento" >Serviços de Desenvolvimento</option>
         <option value="marketing">Marketing Digital</option>
         <option value="bots">Desenvolvimento de Bot's</option>
         <option value="gerenciamento">Gerenciamento de Ad's e Redes Sociais</option>
@@ -81,115 +82,145 @@
     </select>
 </div>
 
-    <!-- Cards de Produtos para cada Serviço -->
-    <div class="cards-container" id="desenvolvimento-cards">
-        <div class="card">
-            <h3>Pacote Básico de Desenvolvimento</h3>
-            <p>Desenvolvimento de landing pages simples e websites institucionais.</p>
-            <p class="price">R$ 2.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Pacote Intermediário de Desenvolvimento</h3>
-            <p>Website com funcionalidades avançadas e integração com APIs.</p>
-            <p class="price">R$ 5.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Pacote Premium de Desenvolvimento</h3>
-            <p>Desenvolvimento de sistemas complexos com suporte contínuo.</p>
-            <p class="price">R$ 10.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
+<!-- Cards de Produtos para cada Serviço -->
+<div class="cards-container" id="hospedagem-cards">
+    <div class="card">
+        <h3>Plano Basic de Hospedagem</h3>
+        <p>Hospedagem Basic<br> para serviços simples para técnologias <br>Html, Css & Javascript<br>50GB Armazenamento</p>
+        <p class="price">R$ 325,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="https://mpago.la/2tZVYwR" class="btn">Saiba Mais</a>
     </div>
+    <div class="card">
+        <h3>Plano Plus de Hospedagem</h3>
+        <p>Hospedagem Plus<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>150GB Armazenamento</p>
+        <p class="price">R$ 450,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="https://mpago.la/2tZVYwR" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Plano Magnum de Hospedagem</h3>
+        <p>Hospedagem Magnum<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>1TB Armazenamento</p>
+        <p class="price">R$ 700,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="https://mpago.la/2tZVYwR" class="btn">Saiba Mais</a>
+    </div>
+</div>
+<div class="cards-container" id="hospedagem-cards">
+    <div class="card">
+        <h3>Plano Básico de Hospedagem</h3>
+        <p>Hospedagem Basic<br> para serviços simples para técnologias <br>Html, Css & Javascript</p>
+        <p class="price">R$ 225,00</p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
 
-    <!-- Cards de Marketing Digital -->
-    <div class="cards-container" id="marketing-cards">
-        <div class="card">
-            <h3>Pacote Básico de Marketing Digital</h3>
-            <p>Campanhas de Google Ads com orçamento otimizado e relatórios básicos.</p>
-            <p class="price">R$ 1.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Pacote Intermediário de Marketing</h3>
-            <p>Gestão de campanhas em Google e Meta (Facebook/Instagram).</p>
-            <p class="price">R$ 3.500,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Pacote Completo de Marketing</h3>
-            <p>Campanhas avançadas em várias plataformas com relatórios detalhados.</p>
-            <p class="price">R$ 7.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
+<div class="cards-container" id="desenvolvimento-cards">
+    <div class="card">
+        <h3>Plano Básico de Desenvolvimento</h3>
+        <p>Desenvolvimento de landing pages simples e websites institucionais.</p>
+        <p class="price">R$ 1.500,00</p> <!-- Valor original R$ 2.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
     </div>
+    <div class="card">
+        <h3>Plano Intermediário de Desenvolvimento</h3>
+        <p>Website com funcionalidades avançadas e integração com APIs.</p>
+        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Plano Premium de Desenvolvimento</h3>
+        <p>Desenvolvimento de sistemas complexos com suporte contínuo.</p>
+        <p class="price">R$ 7.500,00</p> <!-- Valor original R$ 10.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
 
-    <!-- Cards de Desenvolvimento de Bot's -->
-    <div class="cards-container" id="bots-cards">
-        <div class="card">
-            <h3>Chatbot Básico</h3>
-            <p>Chatbot simples para respostas automáticas básicas.</p>
-            <p class="price">R$ 1.500,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Chatbot Intermediário</h3>
-            <p>Chatbot com integração em várias plataformas e respostas inteligentes.</p>
-            <p class="price">R$ 4.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Chatbot Avançado</h3>
-            <p>Chatbot avançado com suporte a AI e atendimento personalizado.</p>
-            <p class="price">R$ 8.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
+<!-- Cards de Marketing Digital -->
+<div class="cards-container" id="marketing-cards">
+    <div class="card">
+        <h3>Plano Básico de Marketing Digital</h3>
+        <p>Campanhas de Google Ads com orçamento otimizado e relatórios básicos.</p>
+        <p class="price">R$ 750,00</p> <!-- Valor original R$ 1.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
     </div>
+    <div class="card">
+        <h3>Plano Intermediário de Marketing</h3>
+        <p>Gestão de campanhas em Google e Meta (Facebook/Instagram).</p>
+        <p class="price">R$ 2.625,00</p> <!-- Valor original R$ 3.500,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Plano Completo de Marketing</h3>
+        <p>Campanhas avançadas em várias plataformas com relatórios detalhados.</p>
+        <p class="price">R$ 5.250,00</p> <!-- Valor original R$ 7.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
 
-    <!-- Cards de Gerenciamento de Redes Sociais -->
-    <div class="cards-container" id="gerenciamento-cards">
-        <div class="card">
-            <h3>Gerenciamento Básico de Redes</h3>
-            <p>Gerenciamento de postagens semanais em uma rede social.</p>
-            <p class="price">R$ 800,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Gerenciamento Completo de Redes</h3>
-            <p>Postagens, relatórios e campanhas pagas em até 3 redes sociais.</p>
-            <p class="price">R$ 2.500,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Gerenciamento Premium de Redes</h3>
-            <p>Estratégia completa, análise de dados e campanhas em várias redes.</p>
-            <p class="price">R$ 5.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
+<!-- Cards de Desenvolvimento de Bot's -->
+<div class="cards-container" id="bots-cards">
+    <div class="card">
+        <h3>Chatbot Básico</h3>
+        <p>Chatbot simples para respostas automáticas básicas.</p>
+        <p class="price">R$ 1.125,00</p> <!-- Valor original R$ 1.500,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
     </div>
+    <div class="card">
+        <h3>Chatbot Intermediário</h3>
+        <p>Chatbot com integração em várias plataformas e respostas inteligentes.</p>
+        <p class="price">R$ 3.000,00</p> <!-- Valor original R$ 4.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Chatbot Avançado</h3>
+        <p>Chatbot avançado com suporte a AI e atendimento personalizado.</p>
+        <p class="price">R$ 6.000,00</p> <!-- Valor original R$ 8.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
 
-    <!-- Cards de Automação de WhatsApp -->
-    <div class="cards-container" id="automacao-cards">
-        <div class="card">
-            <h3>Automação Básica de WhatsApp</h3>
-            <p>Mensagens automáticas básicas com respostas pré-configuradas.</p>
-            <p class="price">R$ 1.200,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Automação Intermediária de WhatsApp</h3>
-            <p>Fluxos de mensagens automáticas com integração API.</p>
-            <p class="price">R$ 3.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
-        <div class="card">
-            <h3>Automação Avançada de WhatsApp</h3>
-            <p>Soluções completas de automação com relatórios de atendimento.</p>
-            <p class="price">R$ 6.000,00</p>
-            <a href="#" class="btn">Saiba Mais</a>
-        </div>
+<!-- Cards de Gerenciamento de Redes Sociais -->
+<div class="cards-container" id="gerenciamento-cards">
+    <div class="card">
+        <h3>Gerenciamento Básico de Redes</h3>
+        <p>Gerenciamento de postagens semanais em uma rede social.</p>
+        <p class="price">R$ 600,00</p> <!-- Valor original R$ 800,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
     </div>
+    <div class="card">
+        <h3>Gerenciamento Completo de Redes</h3>
+        <p>Postagens, relatórios e campanhas pagas em até 3 redes sociais.</p>
+        <p class="price">R$ 1.875,00</p> <!-- Valor original R$ 2.500,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Gerenciamento Premium de Redes</h3>
+        <p>Estratégia completa, análise de dados e campanhas em várias redes.</p>
+        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<!-- Cards de Automação de WhatsApp -->
+<div class="cards-container" id="automacao-cards">
+    <div class="card">
+        <h3>Automação Básica de WhatsApp</h3>
+        <p>Mensagens automáticas básicas com respostas pré-configuradas.</p>
+        <p class="price">R$ 900,00</p> <!-- Valor original R$ 1.200,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Automação Intermediária de WhatsApp</h3>
+        <p>Fluxos de mensagens automáticas com integração API.</p>
+        <p class="price">R$ 2.250,00</p> <!-- Valor original R$ 3.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Automação Avançada de WhatsApp</h3>
+        <p>Soluções completas de automação com relatórios de atendimento.</p>
+        <p class="price">R$ 4.500,00</p> <!-- Valor original R$ 6.000,00 - Redução de 25% -->
+        <a href="#" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
 
     <!-- Seções Individuais dos Serviços -->
     <!--div class="service-section" id="desenvolvimento">
