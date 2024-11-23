@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ff6600;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ffffff;
+            color: #ff6600;
+            border-radius: 5px;
+        }
+
+        /* Menu Hambúrguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            background: #ffffff;
+            height: 3px;
+            width: 25px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #ff6600;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .navbar .links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-right:50px;
+            }
+        }
+
+        /* Container do Serviço Específico */
+        #service-container {
+            max-width: 1200px;
+            margin: 100px auto 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Cards de Serviços Gerais */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .card .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Botão Saiba Mais e Solicitar Serviço */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #e65c00;
+            transform: scale(1.05);
+        }
+
+        /* Responsividade para Cards */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            #service-container {
+                padding: 10px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 5px solid #ff6600;
+        }
+
+        .footer .social-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer .social-links a:hover {
+            color: #ff6600;
+        }
+
+        /* Botão de Chamada para Ação (WhatsApp) */
+        .button-cta {
+            width: 70px;
+            height: 70px;
+            background-image: url("https://sosarcondicionados.com.br/assets/imgs/whats_icon.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img style="margin-top:-10px;" width="80px" src="assets/imgs/Ativo 3.png">
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Serviços</a>
+            <a href="index.html#contact">Contato</a>
+            <a href="detalhes.html">Detalhes</a>
+        </div>
+    </div>
+
+    <!-- Container do Serviço Selecionado -->
+    <div id="service-container">
+        <!-- Serviço específico será exibido aqui -->
+    </div>
+
+    <!-- Lista Completa de Serviços -->
+    <div class="cards-container" id="all-services">
+        <!-- Cada serviço é um card individual -->
+    </div>
+
+    <!-- Botão de Chamada para Ação (WhatsApp) -->
+    <button class="button-cta"></button>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="social-links">
+            <a href="#facebook">Facebook</a>
+            <a href="#instagram">Instagram</a>
+            <a href="#linkedin">LinkedIn</a>
+        </div>
+        <p>© 2024 Todos os direitos reservados.</p>
+    </div>
+
+    <!-- JavaScript para o Menu Hambúrguer -->
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Fecha o menu quando um link for clicado em telas menores
+        navLinks.addEventListener("click", () => {
+            if (navLinks.classList.contains("active")) {
+                navLinks.classList.remove("active");
+            }
+        });
+
+ // Lista de serviços para encontrar pelo ID
+const services = [
+    {
+        id: "01",
+        title: "Plano Basic de Hospedagem",
+        description: "Hospedagem Basic para serviços simples para tecnologias Html, Css & Javascript. 50GB Armazenamento.",
+        price: "R$ 325,00/ano",
+        link: "https://mpago.la/2MLVfwq"
+    },
+    {
+        id: "02",
+        title: "Plano Plus de Hospedagem",
+        description: "Hospedagem Plus para serviços com tecnologias Html, Css, Javascript, Php & Mysql. 150GB Armazenamento.",
+        price: "R$ 450,00/ano",
+        link: "https://mpago.la/1qU3xge"
+    },
+    {
+        id: "03",
+        title: "Plano Magnum de Hospedagem",
+        description: "Hospedagem Magnum para serviços com tecnologias Html, Css, Javascript, Php & Mysql. 1TB Armazenamento.",
+        price: "R$ 700,00/ano",
+        link: "https://mpago.la/1arteaz"
+    },
+    {
+        id: "04",
+        title: "Plano Básico de Desenvolvimento",
+        description: "Desenvolvimento de landing pages simples e websites institucionais.",
+        price: "R$ 1.500,00",
+        link: "https://mpago.la/2pHKvoE"
+    },
+    {
+        id: "05",
+        title: "Plano Intermediário de Desenvolvimento",
+        description: "Website com funcionalidades avançadas e integração com APIs.",
+        price: "R$ 3.750,00",
+        link: "https://mpago.la/1CdPPYT"
+    },
+    {
+        id: "06",
+        title: "Plano Premium de Desenvolvimento",
+        description: "Desenvolvimento de sistemas complexos com suporte contínuo.",
+        price: "R$ 7.500,00",
+        link: "https://mpago.la/1qoFBfx"
+    },
+    {
+        id: "07",
+        title: "Plano Básico de Marketing Digital",
+        description: "Campanhas de Google Ads com orçamento otimizado e relatórios básicos.",
+        price: "R$ 750,00",
+        link: "https://mpago.la/1yrStZp"
+    },
+    {
+        id: "08",
+        title: "Plano Intermediário de Marketing",
+        description: "Gestão de campanhas em Google e Meta (Facebook/Instagram).",
+        price: "R$ 2.625,00",
+        link: "https://mpago.la/27xMfJV"
+    },
+    {
+        id: "09",
+        title: "Plano Completo de Marketing",
+        description: "Campanhas avançadas em várias plataformas com relatórios detalhados.",
+        price: "R$ 5.250,00",
+        link: "https://mpago.la/1g186y1"
+    },
+    {
+        id: "10",
+        title: "Chatbot Básico",
+        description: "Chatbot simples para respostas automáticas básicas.",
+        price: "R$ 1.125,00",
+        link: "https://mpago.la/2BMzLZS"
+    },
+    {
+        id: "11",
+        title: "Chatbot Intermediário",
+        description: "Chatbot com integração em várias plataformas e respostas inteligentes.",
+        price: "R$ 3.000,00",
+        link: "https://mpago.la/2ZC427Q"
+    },
+    {
+        id: "12",
+        title: "Chatbot Avançado",
+        description: "Chatbot avançado com suporte a AI e atendimento personalizado.",
+        price: "R$ 6.000,00",
+        link: "https://mpago.la/1ned5gg"
+    },
+    {
+        id: "13",
+        title: "Gerenciamento Básico de Redes",
+        description: "Gerenciamento de postagens semanais em uma rede social.",
+        price: "R$ 600,00",
+        link: "https://mpago.la/1TmAW1x"
+    },
+    {
+        id: "14",
+        title: "Gerenciamento Completo de Redes",
+        description: "Postagens, relatórios e campanhas pagas em até 3 redes sociais.",
+        price: "R$ 1.875,00",
+        link: "https://mpago.la/2tiqAvF"
+    },
+    {
+        id: "15",
+        title: "Gerenciamento Premium de Redes",
+        description: "Estratégia completa, análise de dados e campanhas em várias redes.",
+        price: "R$ 3.750,00",
+        link: "https://mpago.la/2rfMUU5"
+    },
+    {
+        id: "16",
+        title: "Automação Básica de WhatsApp",
+        description: "Mensagens automáticas básicas com respostas pré-configuradas.",
+        price: "R$ 900,00",
+        link: "https://mpago.la/11GukBg"
+    },
+    {
+        id: "17",
+        title: "Automação Intermediária de WhatsApp",
+        description: "Fluxos de mensagens automáticas com integração API.",
+        price: "R$ 2.250,00",
+        link: "https://mpago.la/1LBdDcH"
+    },
+    {
+        id: "18",
+        title: "Automação Avançada de WhatsApp",
+        description: "Soluções completas de automação com relatórios de atendimento.",
+        price: "R$ 4.500,00",
+        link: "https://mpago.la/2K5uFP3"
+    }
+];
+
+
+        // Função para obter parâmetros da URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(window.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Obtém o ID do serviço da URL
+        const serviceId = getUrlParameter('id');
+
+        // Container para o serviço específico e para todos os serviços
+        const serviceContainer = document.getElementById('service-container');
+        const allServicesContainer = document.getElementById('all-services');
+
+        // Encontra e exibe o serviço correspondente ao ID
+        const selectedService = services.find(service => service.id === serviceId);
+        if (selectedService) {
+            serviceContainer.innerHTML = `
+                <div class="card">
+                    <h3>${selectedService.title}</h3>
+                    <p>${selectedService.description}</p>
+                    <p class="price">${selectedService.price}</p>
+                    <a href="${selectedService.link}" class="btn">Solicitar Serviço</a>
+                </div>
+            `;
+        }
+
+        // Exibe todos os serviços na lista
+        services.forEach(service => {
+            const serviceCard = `
+                <div class="card">
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                    <p class="price">${service.price}</p>
+                    <a href="?id=${service.id}" class="btn">Saiba Mais</a>
+                    <a href="${service.link}" class="btn">Solicitar Serviço</a>
+                </div>
+            `;
+            allServicesContainer.innerHTML += serviceCard;
+        });
+    </script>
+</body>
+
+</html>

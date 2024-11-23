@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertex-Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+    <a  class="button-cta" href='https://api.whatsapp.com/send/?phone=5567992389945&text=Ol%C3%A1%21+Gostaria+de+fazer+um+or%C3%A7amento&type=phone_number&app_absent=0'></a>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img style="margin-top:-10px;"width="80px" src="assets/imgs/Ativo 3.png">
+            </div>
+            <div style="margin-top:-25px;" class="links">
+                <a href="#about">Quem Somos</a>
+                <a href="#services">Serviços</a>
+                <a href="#contact">Contato</a>
+                <a href="detalhes.html">Detalhes</a>
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Slider -->
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="assets/imgs/slide1.jpg" alt="Slider Image 1">
+            </div>
+            <div class="slide">
+                <img src="assets/imgs/slide2.jpg" alt="Slider Image 2">
+            </div>
+            <div class="slide">
+                <img src="assets/imgs/slide3.jpg" alt="Slider Image 3">
+            </div>
+        </div>
+        <div class id="about"></div>
+        <div class="slider-title">Vertex-Code</div>
+    </div>
+<br>
+    <!-- Quem Somos -->
+    <div class="about" >
+        <img src="assets/imgs/sobrenos.jpg" alt="Sobre Nós">
+        <div class="about-text">
+            <h2>Quem Somos</h2>
+            <p>A <span class="highlight">Vertex-Code</span> é uma empresa focada em fornecer soluções tecnológicas inteligentes e personalizadas. Nossa missão é transformar ideias em realidade através de desenvolvimento de software, marketing digital e automação. Valorizamos inovação e qualidade para entregar resultados excepcionais aos nossos clientes.</p>
+        </div>
+    </div>
+    <div  id="services"></div>
+    <br>
+
+    <!-- Serviços -->
+    <div class="services">
+        <h2>Serviços</h2>
+        <div class="service-buttons">
+            <a href="#desenvolvimento"  class="btn">Desenvolvimento</a>
+            <a href="#marketing-digital" class="btn">Marketing Digital</a>
+            <a href="#bots" class="btn">Bot's</a>
+            <a href="#gerenciamento-ads" class="btn">Ad's & Redes Sociais</a>
+            <a href="#automacao" class="btn">Automatização WhatsApp</a>
+        </div>
+        <br>
+        <h2>Selecione um Serviço</h2>
+    </div>
+
+      <!-- Seletor de Serviços -->
+<!-- Seletor de Serviços -->
+<div style="margin-top:-50px" class="service-select">
+    <select id="serviceSelect" onchange="displayCards()">
+        <option value="hospedagem" selected>Serviços de Hospedagem</option>
+        <option value="desenvolvimento" >Serviços de Desenvolvimento</option>
+        <option value="marketing">Marketing Digital</option>
+        <option value="bots">Desenvolvimento de Bot's</option>
+        <option value="gerenciamento">Gerenciamento de Ad's e Redes Sociais</option>
+        <option value="automacao">Automatização de WhatsApp</option>
+    </select>
+</div>
+<!-- Cards de Produtos para cada Serviço -->
+<div class="cards-container" id="hospedagem-cards">
+    <div class="card">
+        <h3>Pacote Básico de Hospedagem</h3>
+        <p>Hospedagem Basic<br> para serviços simples para tecnologias <br>Html, Css & Javascript</p>
+        <p class="price">R$ 325,00</p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="servicos.html?id=01" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Plano Plus de Hospedagem</h3>
+        <p>Hospedagem Plus<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>150GB Armazenamento</p>
+        <p class="price">R$ 450,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="servicos.html?id=02" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Plano Magnum de Hospedagem</h3>
+        <p>Hospedagem Magnum<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>1TB Armazenamento</p>
+        <p class="price">R$ 700,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
+        <a href="servicos.html?id=03" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<div class="cards-container" id="desenvolvimento-cards">
+    <div class="card">
+        <h3>Pacote Básico de Desenvolvimento</h3>
+        <p>Desenvolvimento de landing pages simples e websites institucionais.</p>
+        <p class="price">R$ 1.500,00</p> <!-- Valor original R$ 2.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=04" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Pacote Intermediário de Desenvolvimento</h3>
+        <p>Website com funcionalidades avançadas e integração com APIs.</p>
+        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=05" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Pacote Premium de Desenvolvimento</h3>
+        <p>Desenvolvimento de sistemas complexos com suporte contínuo.</p>
+        <p class="price">R$ 7.500,00</p> <!-- Valor original R$ 10.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=06" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<!-- Cards de Marketing Digital -->
+<div class="cards-container" id="marketing-cards">
+    <div class="card">
+        <h3>Pacote Básico de Marketing Digital</h3>
+        <p>Campanhas de Google Ads com orçamento otimizado e relatórios básicos.</p>
+        <p class="price">R$ 750,00</p> <!-- Valor original R$ 1.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=07" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Pacote Intermediário de Marketing</h3>
+        <p>Gestão de campanhas em Google e Meta (Facebook/Instagram).</p>
+        <p class="price">R$ 2.625,00</p> <!-- Valor original R$ 3.500,00 - Redução de 25% -->
+        <a href="servicos.html?id=08" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Pacote Completo de Marketing</h3>
+        <p>Campanhas avançadas em várias plataformas com relatórios detalhados.</p>
+        <p class="price">R$ 5.250,00</p> <!-- Valor original R$ 7.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=09" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<!-- Cards de Desenvolvimento de Bot's -->
+<div class="cards-container" id="bots-cards">
+    <div class="card">
+        <h3>Chatbot Básico</h3>
+        <p>Chatbot simples para respostas automáticas básicas.</p>
+        <p class="price">R$ 1.125,00</p> <!-- Valor original R$ 1.500,00 - Redução de 25% -->
+        <a href="servicos.html?id=10" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Chatbot Intermediário</h3>
+        <p>Chatbot com integração em várias plataformas e respostas inteligentes.</p>
+        <p class="price">R$ 3.000,00</p> <!-- Valor original R$ 4.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=11" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Chatbot Avançado</h3>
+        <p>Chatbot avançado com suporte a AI e atendimento personalizado.</p>
+        <p class="price">R$ 6.000,00</p> <!-- Valor original R$ 8.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=12" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<!-- Cards de Gerenciamento de Redes Sociais -->
+<div class="cards-container" id="gerenciamento-cards">
+    <div class="card">
+        <h3>Gerenciamento Básico de Redes</h3>
+        <p>Gerenciamento de postagens semanais em uma rede social.</p>
+        <p class="price">R$ 600,00</p> <!-- Valor original R$ 800,00 - Redução de 25% -->
+        <a href="servicos.html?id=13" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Gerenciamento Completo de Redes</h3>
+        <p>Postagens, relatórios e campanhas pagas em até 3 redes sociais.</p>
+        <p class="price">R$ 1.875,00</p> <!-- Valor original R$ 2.500,00 - Redução de 25% -->
+        <a href="servicos.html?id=14" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Gerenciamento Premium de Redes</h3>
+        <p>Estratégia completa, análise de dados e campanhas em várias redes.</p>
+        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=15" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+<!-- Cards de Automação de WhatsApp -->
+<div class="cards-container" id="automacao-cards">
+    <div class="card">
+        <h3>Automação Básica de WhatsApp</h3>
+        <p>Mensagens automáticas básicas com respostas pré-configuradas.</p>
+        <p class="price">R$ 900,00</p> <!-- Valor original R$ 1.200,00 - Redução de 25% -->
+        <a href="servicos.html?id=16" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Automação Intermediária de WhatsApp</h3>
+        <p>Fluxos de mensagens automáticas com integração API.</p>
+        <p class="price">R$ 2.250,00</p> <!-- Valor original R$ 3.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=17" class="btn">Saiba Mais</a>
+    </div>
+    <div class="card">
+        <h3>Automação Avançada de WhatsApp</h3>
+        <p>Soluções completas de automação com relatórios de atendimento.</p>
+        <p class="price">R$ 4.500,00</p> <!-- Valor original R$ 6.000,00 - Redução de 25% -->
+        <a href="servicos.html?id=18" class="btn">Saiba Mais</a>
+    </div>
+</div>
+
+</div>
+
+
+    <!-- Seções Individuais dos Serviços -->
+    <!--div class="service-section" id="desenvolvimento">
+        <h2>Serviços de Desenvolvimento</h2>
+        <p>Oferecemos serviços personalizados de desenvolvimento de software para atender às suas necessidades empresariais. Utilizamos tecnologias modernas e processos ágeis para garantir qualidade e eficiência.</p>
+    </div>
+
+    <div class="service-section" id="marketing-digital">
+        <h2>Marketing Digital - Google Ads e Meta Business</h2>
+        <p>Campanhas em Google Ads e Meta Business para conectar sua empresa aos clientes certos nos momentos ideais. Estratégias personalizadas para alcançar e engajar o público correto.</p>
+    </div>
+
+    <div class="service-section" id="bots">
+        <h2>Desenvolvimento de Bot's</h2>
+        <p>Desenvolvemos Chatbots e soluções Multicall para um atendimento automatizado eficiente, proporcionando um suporte rápido e preciso aos seus clientes.</p>
+    </div>
+
+    <div class="service-section" id="gerenciamento-ads">
+        <h2>Gerenciamento de Ad's e Redes Sociais</h2>
+        <p>Gerenciamento de campanhas em Google, Instagram, Facebook, WhatsApp e E-mail. Nosso objetivo é proporcionar uma comunicação estratégica com seu público-alvo, fortalecendo sua presença digital.</p>
+    </div>
+
+    <div class="service-section" id="automacao">
+        <h2>Automatização de Mensagens WhatsApp</h2>
+        <p>Automatizamos mensagens no WhatsApp com suporte especializado para oferecer respostas rápidas, melhorando a experiência do cliente e otimizando seu atendimento.</p>
+    </div -->
+<!-- Portfólio -->
+<div class="portfolio" id="portfolio">
+    <h2 style="text-align: center; color: #ff6600;">Portfólio</h2>
+    <div class="portfolio-container">
+        <!-- 3 Linhas de Portfólio -->
+        <div class="portfolio-row">
+            <!-- 5 Colunas de Imagens por Linha -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+1" alt="Projeto 1">
+                    <div class="portfolio-hover">Projeto 1</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+2" alt="Projeto 2">
+                    <div class="portfolio-hover">Projeto 2</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+3" alt="Projeto 3">
+                    <div class="portfolio-hover">Projeto 3</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+4" alt="Projeto 4">
+                    <div class="portfolio-hover">Projeto 4</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+5" alt="Projeto 5">
+                    <div class="portfolio-hover">Projeto 5</div>
+                </div>
+            </div>
+        </div>
+        <!-- Segunda Linha -->
+        <div class="portfolio-row">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+6" alt="Projeto 6">
+                    <div class="portfolio-hover">Projeto 6</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+7" alt="Projeto 7">
+                    <div class="portfolio-hover">Projeto 7</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+8" alt="Projeto 8">
+                    <div class="portfolio-hover">Projeto 8</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+9" alt="Projeto 9">
+                    <div class="portfolio-hover">Projeto 9</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+10" alt="Projeto 10">
+                    <div class="portfolio-hover">Projeto 10</div>
+                </div>
+            </div>
+        </div>
+        <!-- Terceira Linha -->
+        <div class="portfolio-row">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+11" alt="Projeto 11">
+                    <div class="portfolio-hover">Projeto 11</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+12" alt="Projeto 12">
+                    <div class="portfolio-hover">Projeto 12</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+13" alt="Projeto 13">
+                    <div class="portfolio-hover">Projeto 13</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+14" alt="Projeto 14">
+                    <div class="portfolio-hover">Projeto 14</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="https://via.placeholder.com/200x150/333333/ffffff?text=Projeto+15" alt="Projeto 15">
+                    <div class="portfolio-hover">Projeto 15</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="contact"></div><br>
+<!-- Contato -->
+<div class="contact-section" >
+    <h2 style="text-align: center; color: #ff6600;">Entre em Contato</h2>
+    <div class="contact-container">
+        <!-- Google Maps Embed -->
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245795.84053317798!2d-48.10217022315927!3d-15.72148702312245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3d18df9ae275%3A0x738470e469754a24!2sBras%C3%ADlia%2C%20Brasilia%20-%20Federal%20District!5e0!3m2!1sen!2sbr!4v1730283723999!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Formulário de Contato -->
+        <div class="contact-form">
+            <form action="process.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <div class="footer" id="contact">
+        <div class="social-links">
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">LinkedIn</a>
+        </div>
+        <p>&copy; 2024 Vertex-Code - Todos os direitos reservados</p>
+        <p>Gabriel Machado</p>
+    </div>
+    <script>
+
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

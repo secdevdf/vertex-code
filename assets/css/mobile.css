@@ -1,0 +1,477 @@
+   /* Base do Site */
+   body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+        /* Navbar Responsiva */
+        .navbar {
+            background-color: #ff6600;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar .logo a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #ffffff;
+
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Animação suave */
+            max-height: 500px; /* Para o desktop */
+            opacity: 1;
+        }
+
+        .navbar ul.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .navbar ul li {
+            padding: 0 10px;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ffffff;
+            color: #ff6600;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .menu-toggle {
+                display: block; /* Mostra o ícone do menu */
+                margin-right: 30px;
+            }
+
+            .navbar ul {
+                display: block; /* Deixa o menu em bloco para a animação */
+                width: 100%;
+                background-color: #ff6600;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* Fica logo abaixo da navbar */
+                left: 0;
+                max-height: 0; /* Começa escondido */
+                opacity: 0;
+                overflow: hidden;
+            }
+
+            .navbar ul.active {
+                max-height: 500px; /* Altura máxima para expandir */
+                opacity: 1; /* Faz o menu aparecer */
+            }
+
+            .navbar ul li {
+                text-align: center;
+                padding: 15px 0;
+                border-top: 1px solid #ffffff30;
+            }
+        }
+
+/* Slider */
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 70px; /* Espaço para a navbar fixa */
+}
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.slider-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Seção Quem Somos */
+.about {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    flex: 1;
+    padding: 20px;
+}
+ /* Seletor de Serviços */
+ .service-select {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ff6600;
+    border-radius: 5px;
+}
+/* Seção Serviços */
+.services {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.services h2 {
+    text-align: center;
+    color: #ff6600;
+}
+
+.service-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.service-buttons .btn {
+    padding: 15px 30px;
+    background-color: #ff6600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.service-buttons .btn:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+/* Serviços Individuais */
+.service-section {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-section.active {
+    display: block;
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+        /* Cards de Produtos */
+        .cards-container {
+            display: none; /* Todos os cards começam ocultos */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .cards-container.active {
+            display: grid; /* Só aparecem quando são selecionados */
+        }
+
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+
+.card p {
+    margin: 10px 0;
+}
+
+.card .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Portfólio */
+.portfolio {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    height: 180px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    margin-top:10px;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.portfolio-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+.portfolio-item:hover .portfolio-hover {
+    opacity: 1;
+}
+
+/* Seção de Contato */
+.contact-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.contact-map {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form {
+    flex: 0 0 45%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 0px 90px 0px 90px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #ff6600;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 5px solid #ff6600;
+}
+
+.footer .social-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer .social-links a:hover {
+    color: #ff6600;
+}
+
+/* Botão de CTA */
+.button-cta {
+    width: 50px;
+    height: 50px;
+    background-image: url("https://sosarcondicionados.com.br/assets/imgs/whats_icon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .service-buttons {
+        flex-direction: column;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .slider-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        flex: 1 1 100%;
+    }
+
+    .portfolio-item {
+        height: 150px;
+    }
+}
