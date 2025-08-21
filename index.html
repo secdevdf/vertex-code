@@ -3,337 +3,991 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertex-Code</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="assets/css/styles.css" rel="stylesheet">
+    <title>Vertex Code | Desenvolvimento & Cybersecurity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-
+        :root {
+            --matrix-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --text-color: #ffffff;
+            --accent: #00b334;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: var(--darker-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Efeito de chuva do Matrix */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            color: var(--matrix-green);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 255, 65, 0.1);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--matrix-green);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .logo span {
+            color: var(--matrix-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--matrix-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--matrix-green);
+            transition: width 0.3s;
+            box-shadow: 0 0 8px var(--matrix-green);
+        }
+        
+        .nav-links a:hover {
+            text-shadow: 0 0 8px var(--matrix-green);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Menu Hamburguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: var(--matrix-green);
+            margin-bottom: 5px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px var(--matrix-green);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            color: var(--matrix-green);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--matrix-green);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 15px var(--matrix-green); }
+            50% { text-shadow: 0 0 20px var(--matrix-green), 0 0 30px var(--matrix-green); }
+            100% { text-shadow: 0 0 15px var(--matrix-green); }
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .highlight {
+            color: var(--matrix-green);
+            font-weight: 700;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--matrix-green);
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid var(--matrix-green);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px var(--matrix-green);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .section-title p {
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services */
+        .services {
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid var(--matrix-green);
+            border-bottom: 1px solid var(--matrix-green);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--matrix-green);
+            box-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+        
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--matrix-green);
+        }
+        
+        .service-card .price {
+            font-size: 1.2rem;
+            color: var(--matrix-green);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background-color: var(--darker-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matrix-green);
+            font-size: 3rem;
+            border-bottom: 1px solid var(--matrix-green);
+            text-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .portfolio-info {
+            padding: 20px;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--matrix-green);
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .portfolio-tag {
+            background-color: rgba(0, 255, 65, 0.2);
+            color: var(--matrix-green);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            border: 1px solid var(--matrix-green);
+        }
+        
+        /* Contact */
+        .contact {
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid var(--matrix-green);
+            color: var(--text-color);
+        }
+        
+        .contact .section-title h2 {
+            color: var(--matrix-green);
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--matrix-green);
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 255, 65, 0.1);
+            border-radius: 3px;
+            color: var(--matrix-green);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid var(--matrix-green);
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(0, 255, 65, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--matrix-green);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--matrix-green);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 3px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--matrix-green);
+            border: 1px solid var(--matrix-green);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--matrix-green);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            color: var(--matrix-green);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--matrix-green);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 5px;
+            border: 1px solid var(--matrix-green);
+            box-shadow: 0 0 20px var(--matrix-green);
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            color: var(--matrix-green);
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--matrix-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease;
+                z-index: 1000;
+                border-left: 1px solid var(--matrix-green);
+                box-shadow: -5px 0 15px rgba(0, 255, 65, 0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <a  class="button-cta" href='https://api.whatsapp.com/send/?phone=5567992389945&text=Ol%C3%A1%21+Gostaria+de+fazer+um+or%C3%A7amento&type=phone_number&app_absent=0'></a>
-    <!-- Navbar -->
-    <div class="navbar">
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-bg"></canvas>
+
+    <!-- Header -->
+    <header>
         <div class="container">
-            <div class="logo">
-                <img style="margin-top:-10px;"width="80px" src="assets/imgs/Ativo 3.png">
-            </div>
-            <div style="margin-top:-25px;" class="links">
-                <a href="#about">Quem Somos</a>
-                <a href="#services">Serviços</a>
-                <a href="#contact">Contato</a>
-                <a href="detalhes.html">Detalhes</a>
-
-
-            </div>
-        </div>
-    </div>
-    <br>
-
-    <!-- Slider -->
-    <div class="slider">
-        <div class="slides">
-            <div class="slide">
-                <img src="assets/imgs/slide1.jpg" alt="Slider Image 1">
-            </div>
-            <div class="slide">
-                <img src="assets/imgs/slide2.jpg" alt="Slider Image 2">
-            </div>
-            <div class="slide">
-                <img src="assets/imgs/slide3.jpg" alt="Slider Image 3">
-            </div>
-        </div>
-        <div class id="about"></div>
-        <div class="slider-title">Vertex-Code</div>
-    </div>
-<br>
-    <!-- Quem Somos -->
-    <div class="about" >
-        <img src="assets/imgs/sobrenos.jpg" alt="Sobre Nós">
-        <div class="about-text">
-            <h2>Quem Somos</h2>
-            <p>A <span class="highlight">Vertex-Code</span> é uma empresa focada em fornecer soluções tecnológicas inteligentes e personalizadas. Nossa missão é transformar ideias em realidade através de desenvolvimento de software, marketing digital e automação. Valorizamos inovação e qualidade para entregar resultados excepcionais aos nossos clientes.</p>
-        </div>
-    </div>
-    <div  id="services"></div>
-    <br>
-
-    <!-- Serviços -->
-    <div class="services">
-        <h2>Serviços</h2>
-        <div class="service-buttons">
-            <a href="#desenvolvimento"  class="btn">Desenvolvimento</a>
-            <a href="#marketing-digital" class="btn">Marketing Digital</a>
-            <a href="#bots" class="btn">Bot's</a>
-            <a href="#gerenciamento-ads" class="btn">Ad's & Redes Sociais</a>
-            <a href="#automacao" class="btn">Automatização WhatsApp</a>
-        </div>
-        <br>
-        <h2>Selecione um Serviço</h2>
-    </div>
-
-      <!-- Seletor de Serviços -->
-<!-- Seletor de Serviços -->
-<div style="margin-top:-50px" class="service-select">
-    <select id="serviceSelect" onchange="displayCards()">
-        <option value="hospedagem" selected>Serviços de Hospedagem</option>
-        <option value="desenvolvimento" >Serviços de Desenvolvimento</option>
-        <option value="marketing">Marketing Digital</option>
-        <option value="bots">Desenvolvimento de Bot's</option>
-        <option value="gerenciamento">Gerenciamento de Ad's e Redes Sociais</option>
-        <option value="automacao">Automatização de WhatsApp</option>
-    </select>
-</div>
-<!-- Cards de Produtos para cada Serviço -->
-<div class="cards-container" id="hospedagem-cards">
-    <div class="card">
-        <h3>Pacote Básico de Hospedagem</h3>
-        <p>Hospedagem Basic<br> para serviços simples para tecnologias <br>Html, Css & Javascript</p>
-        <p class="price">R$ 325,00</p> <!-- Valor original R$ 300,00 - Redução de 25% -->
-        <a href="servicos.html?id=01" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Plano Plus de Hospedagem</h3>
-        <p>Hospedagem Plus<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>150GB Armazenamento</p>
-        <p class="price">R$ 450,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
-        <a href="servicos.html?id=02" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Plano Magnum de Hospedagem</h3>
-        <p>Hospedagem Magnum<br> para serviços simples para técnologias <br>Html, Css, Javascript, Php & Mysql<br>1TB Armazenamento</p>
-        <p class="price">R$ 700,00/ano </p> <!-- Valor original R$ 300,00 - Redução de 25% -->
-        <a href="servicos.html?id=03" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-<div class="cards-container" id="desenvolvimento-cards">
-    <div class="card">
-        <h3>Pacote Básico de Desenvolvimento</h3>
-        <p>Desenvolvimento de landing pages simples e websites institucionais.</p>
-        <p class="price">R$ 1.500,00</p> <!-- Valor original R$ 2.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=04" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Pacote Intermediário de Desenvolvimento</h3>
-        <p>Website com funcionalidades avançadas e integração com APIs.</p>
-        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=05" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Pacote Premium de Desenvolvimento</h3>
-        <p>Desenvolvimento de sistemas complexos com suporte contínuo.</p>
-        <p class="price">R$ 7.500,00</p> <!-- Valor original R$ 10.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=06" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-<!-- Cards de Marketing Digital -->
-<div class="cards-container" id="marketing-cards">
-    <div class="card">
-        <h3>Pacote Básico de Marketing Digital</h3>
-        <p>Campanhas de Google Ads com orçamento otimizado e relatórios básicos.</p>
-        <p class="price">R$ 750,00</p> <!-- Valor original R$ 1.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=07" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Pacote Intermediário de Marketing</h3>
-        <p>Gestão de campanhas em Google e Meta (Facebook/Instagram).</p>
-        <p class="price">R$ 2.625,00</p> <!-- Valor original R$ 3.500,00 - Redução de 25% -->
-        <a href="servicos.html?id=08" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Pacote Completo de Marketing</h3>
-        <p>Campanhas avançadas em várias plataformas com relatórios detalhados.</p>
-        <p class="price">R$ 5.250,00</p> <!-- Valor original R$ 7.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=09" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-<!-- Cards de Desenvolvimento de Bot's -->
-<div class="cards-container" id="bots-cards">
-    <div class="card">
-        <h3>Chatbot Básico</h3>
-        <p>Chatbot simples para respostas automáticas básicas.</p>
-        <p class="price">R$ 1.125,00</p> <!-- Valor original R$ 1.500,00 - Redução de 25% -->
-        <a href="servicos.html?id=10" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Chatbot Intermediário</h3>
-        <p>Chatbot com integração em várias plataformas e respostas inteligentes.</p>
-        <p class="price">R$ 3.000,00</p> <!-- Valor original R$ 4.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=11" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Chatbot Avançado</h3>
-        <p>Chatbot avançado com suporte a AI e atendimento personalizado.</p>
-        <p class="price">R$ 6.000,00</p> <!-- Valor original R$ 8.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=12" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-<!-- Cards de Gerenciamento de Redes Sociais -->
-<div class="cards-container" id="gerenciamento-cards">
-    <div class="card">
-        <h3>Gerenciamento Básico de Redes</h3>
-        <p>Gerenciamento de postagens semanais em uma rede social.</p>
-        <p class="price">R$ 600,00</p> <!-- Valor original R$ 800,00 - Redução de 25% -->
-        <a href="servicos.html?id=13" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Gerenciamento Completo de Redes</h3>
-        <p>Postagens, relatórios e campanhas pagas em até 3 redes sociais.</p>
-        <p class="price">R$ 1.875,00</p> <!-- Valor original R$ 2.500,00 - Redução de 25% -->
-        <a href="servicos.html?id=14" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Gerenciamento Premium de Redes</h3>
-        <p>Estratégia completa, análise de dados e campanhas em várias redes.</p>
-        <p class="price">R$ 3.750,00</p> <!-- Valor original R$ 5.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=15" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-<!-- Cards de Automação de WhatsApp -->
-<div class="cards-container" id="automacao-cards">
-    <div class="card">
-        <h3>Automação Básica de WhatsApp</h3>
-        <p>Mensagens automáticas básicas com respostas pré-configuradas.</p>
-        <p class="price">R$ 900,00</p> <!-- Valor original R$ 1.200,00 - Redução de 25% -->
-        <a href="servicos.html?id=16" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Automação Intermediária de WhatsApp</h3>
-        <p>Fluxos de mensagens automáticas com integração API.</p>
-        <p class="price">R$ 2.250,00</p> <!-- Valor original R$ 3.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=17" class="btn">Saiba Mais</a>
-    </div>
-    <div class="card">
-        <h3>Automação Avançada de WhatsApp</h3>
-        <p>Soluções completas de automação com relatórios de atendimento.</p>
-        <p class="price">R$ 4.500,00</p> <!-- Valor original R$ 6.000,00 - Redução de 25% -->
-        <a href="servicos.html?id=18" class="btn">Saiba Mais</a>
-    </div>
-</div>
-
-</div>
-
-
-    <!-- Seções Individuais dos Serviços -->
-    <!--div class="service-section" id="desenvolvimento">
-        <h2>Serviços de Desenvolvimento</h2>
-        <p>Oferecemos serviços personalizados de desenvolvimento de software para atender às suas necessidades empresariais. Utilizamos tecnologias modernas e processos ágeis para garantir qualidade e eficiência.</p>
-    </div>
-
-    <div class="service-section" id="marketing-digital">
-        <h2>Marketing Digital - Google Ads e Meta Business</h2>
-        <p>Campanhas em Google Ads e Meta Business para conectar sua empresa aos clientes certos nos momentos ideais. Estratégias personalizadas para alcançar e engajar o público correto.</p>
-    </div>
-
-    <div class="service-section" id="bots">
-        <h2>Desenvolvimento de Bot's</h2>
-        <p>Desenvolvemos Chatbots e soluções Multicall para um atendimento automatizado eficiente, proporcionando um suporte rápido e preciso aos seus clientes.</p>
-    </div>
-
-    <div class="service-section" id="gerenciamento-ads">
-        <h2>Gerenciamento de Ad's e Redes Sociais</h2>
-        <p>Gerenciamento de campanhas em Google, Instagram, Facebook, WhatsApp e E-mail. Nosso objetivo é proporcionar uma comunicação estratégica com seu público-alvo, fortalecendo sua presença digital.</p>
-    </div>
-
-    <div class="service-section" id="automacao">
-        <h2>Automatização de Mensagens WhatsApp</h2>
-        <p>Automatizamos mensagens no WhatsApp com suporte especializado para oferecer respostas rápidas, melhorando a experiência do cliente e otimizando seu atendimento.</p>
-    </div -->
-<!-- Portfólio -->
-<div class="portfolio" id="portfolio">
-    <h2 style="text-align: center; color: #ff6600;">Portfólio</h2>
-    <div class="portfolio-container">
-        <!-- 3 Linhas de Portfólio -->
-        <div class="portfolio-row">
-            <!-- 5 Colunas de Imagens por Linha -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="assets/imgs/SOS-AR-PORT.png" alt="Projeto 1">
-                    <div class="portfolio-hover">Projeto 1</div>
+            <nav>
+                <div class="logo">Vertex<span>Code</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home" onclick="closeMobileMenu()">Início</a></li>
+                    <li><a href="#services" onclick="closeMobileMenu()">Serviços</a></li>
+                    <li><a href="#catalog" onclick="closeMobileMenu()">Catálogo</a></li>
+                    <li><a href="#about" onclick="closeMobileMenu()">Sobre</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu()">Contato</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://secdevdf.github.io/secdevdf/imgs/zionbot.png" alt="Projeto 2">
-                    <div class="portfolio-hover">Projeto 2</div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://secdevdf.github.io/secdevdf/imgs/solidaemp.png" alt="Projeto 3">
-                    <div class="portfolio-hover">Projeto 3</div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://secdevdf.github.io/secdevdf/imgs/Stefferson.png" alt="Projeto 4">
-                    <div class="portfolio-hover">Projeto 4</div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <img src="https://secdevdf.github.io/secdevdf/imgs/brs.png" alt="Projeto 5">
-                    <div class="portfolio-hover">Projeto 5</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Vertex <span class="highlight">Code</span></h1>
+                <p>Desenvolvimento de software e soluções em cybersecurity com tecnologia de ponta</p>
+                <div>
+                    <a href="#services" class="btn">Nossos Serviços</a>
+                    <a href="#catalog" class="btn">Catálogo Completo</a>
                 </div>
             </div>
         </div>
-    
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Soluções tecnológicas completas para seu negócio</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites, sistemas web e aplicações sob medida com as melhores tecnologias do mercado.</p>
+                    <div class="price">A partir de R$ 1.200,00</div>
+                    <button class="btn" onclick="openOrderModal('Desenvolvimento Web')">Solicitar Orçamento</button>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Proteção de dados, testes de invasão e soluções completas em segurança digital.</p>
+                    <div class="price">A partir de R$ 1.800,00</div>
+                    <button class="btn" onclick="openOrderModal('Cybersecurity')">Solicitar Orçamento</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Solutions</h3>
+                    <p>Infraestrutura em nuvem, deploy e gestão de aplicações escaláveis e seguras.</p>
+                    <div class="price">A partir de R$ 900,00/mês</div>
+                    <button class="btn" onclick="openOrderModal('Cloud Solutions')">Solicitar Orçamento</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Banco de Dados</h3>
+                    <p>Modelagem, administração e otimização de bancos de dados relacionais e NoSQL.</p>
+                    <div class="price">A partir de R$ 1.500,00</div>
+                    <button class="btn" onclick="openOrderModal('Banco de Dados')">Solicitar Orçamento</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Consultoria TI</h3>
+                    <p>Análise, planejamento e implementação de estratégias tecnológicas para empresas.</p>
+                    <div class="price">A partir de R$ 120,00/hora</div>
+                    <button class="btn" onclick="openOrderModal('Consultoria TI')">Solicitar Orçamento</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="contact"></div><br>
-<!-- Contato -->
-<div class="contact-section" >
-    <h2 style="text-align: center; color: #ff6600;">Entre em Contato</h2>
-    <div class="contact-container">
-        <!-- Google Maps Embed -->
-        <div class="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245795.84053317798!2d-48.10217022315927!3d-15.72148702312245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3d18df9ae275%3A0x738470e469754a24!2sBras%C3%ADlia%2C%20Brasilia%20-%20Federal%20District!5e0!3m2!1sen!2sbr!4v1730283723999!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+    </section>
 
-        <!-- Formulário de Contato -->
-        <div class="contact-form">
-            <form action="process.php" method="POST">
+    <!-- Catalog Section -->
+    <section id="catalog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Catálogo de Serviços</h2>
+                <p>Confira nossos pacotes e serviços especializados</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Landing Page</h3>
+                    <p>Página de conversão responsiva com design moderno и integração com redes sociais.</p>
+                    <div class="price">R$ 800,00</div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">HTML/CSS</span>
+                        <span class="portfolio-tag">JavaScript</span>
+                        <span class="portfolio-tag">Responsivo</span>
+                    </div>
+                    <button class="btn" onclick="openOrderModal('Landing Page')">Solicitar</button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-store"></i>
+                    <h3>E-commerce Básico</h3>
+                    <p>Loja virtual com até 50 produtos, gateway de pagamento e painel administrativo.</p>
+                    <div class="price">R$ 2.200,00</div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">WordPress</span>
+                        <span class="portfolio-tag">WooCommerce</span>
+                        <span class="portfolio-tag">Pagamentos</span>
+                    </div>
+                    <button class="btn" onclick="openOrderModal('E-commerce Básico')">Solicitar</button>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Teste de Segurança</h3>
+                    <p>Análise de vulnerabilidades em aplicação web com relatório detalhado e sugestões de correção.</p>
+                    <div class="price">R$ 1.500,00</div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">Pentest</span>
+                        <span class="portfolio-tag">OWASP</span>
+                        <span class="portfolio-tag">Relatório</span>
+                    </div>
+                    <button class="btn" onclick="openOrderModal('Teste de Segurança')">Solicitar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="services" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a Vertex Code e nossa missão</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Inovação e segurança em primeiro lugar</h3>
+                    <p>A Vertex Code nasceu da paixão por tecnologia e da vontade de criar soluções que realmente fazem a diferença no mercado. Nossa equipe é formada por especialistas em desenvolvimento, segurança e design.</p>
+                    <p>Combinamos expertise técnica com criatividade para entregar projetos que não apenas funcionam perfeitamente, mas também oferecem experiências excepcionais aos usuários.</p>
+                    <p>Nossa missão é simplificar a tecnologia para empresas, permitindo que se concentrem no que realmente importa: crescer seus negócios.</p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-code" style="font-size: 250px; color: var(--matrix-green); text-shadow: 0 0 20px var(--matrix-green);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Pronto para transformar sua ideia em realidade?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vamos Conversar</h3>
+                    <p>Estamos sempre disponíveis para discutir novos projetos, oportunidades de parceria ou simplesmente trocar ideias sobre tecnologia.</p>
+                    <p>Entre em contato conosco através dos canais abaixo ou preencha o formulário ao lado.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/55679923849945" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Seu email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service" name="service">
+                                <option value="">Selecione um serviço</option>
+                                <option value="Desenvolvimento Web">Desenvolvimento Web</option>
+                                <option value="Apps Mobile">Apps Mobile</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                                <option value="Cloud Solutions">Cloud Solutions</option>
+                                <option value="Banco de Dados">Banco de Dados</option>
+                                <option value="Consultoria TI">Consultoria TI</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Teste de Segurança">Teste de Segurança</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Sua mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Vertex Code.<br>Gabriel Machado </br> Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Solicitar Serviço</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="orderForm">
+                <input type="hidden" id="selectedService" name="selectedService">
                 <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="orderName">Nome</label>
+                    <input type="text" id="orderName" name="orderName" placeholder="Seu nome" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="orderEmail">Email</label>
+                    <input type="email" id="orderEmail" name="orderEmail" placeholder="Seu email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Telefone:</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <label for="orderDetails">Detalhes do Projeto</label>
+                    <textarea id="orderDetails" name="orderDetails" placeholder="Descreva seu projeto ou necessidades" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="message">Mensagem:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn">Enviar Mensagem</button>
+                <button type="submit" class="btn">Enviar para WhatsApp</button>
             </form>
         </div>
     </div>
-</div>
 
-    <!-- Footer -->
-    <div class="footer" id="contact">
-        <div class="social-links">
-            <a href="#">Facebook</a> |
-            <a href="#">Instagram</a> |
-            <a href="#">LinkedIn</a>
-        </div>
-        <p>&copy; 2024 Vertex-Code - Todos os direitos reservados</p>
-        <p>Gabriel Machado</p>
-    </div>
     <script>
-
+        // Matrix rain animation
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const matrixChars = "01abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 255, 65, 0.2)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.9)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 255, 65, 0.1)';
+            }
+        });
+        
+        // Resize canvas when window is resized
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target) && navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // WhatsApp integration functions
+        function openOrderModal(service) {
+            document.getElementById('modalTitle').textContent = `Solicitar: ${service}`;
+            document.getElementById('selectedService').value = service;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        
+        // Handle order form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('orderName').value;
+            const email = document.getElementById('orderEmail').value;
+            const service = document.getElementById('selectedService').value;
+            const details = document.getElementById('orderDetails').value;
+            
+            // Format message for WhatsApp
+            const message = `Olá! Gostaria de solicitar um orçamento para o serviço:\n\n*Serviço:* ${service}\n*Nome:* ${name}\n*Email:* ${email}\n\n*Detalhes do Projeto:*\n${details}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/55679923849945?text=${encodedMessage}`, '_blank');
+            
+            // Close modal and reset form
+            closeModal();
+            this.reset();
+        });
+        
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Format message for WhatsApp
+            const whatsappMessage = `Nova mensagem do site Vertex Code:\n\n*Nome:* ${name}\n*Email:* ${email}\n*Serviço de interesse:* ${service || 'Não especificado'}\n\n*Mensagem:*\n${message}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/55679923849945?text=${encodedMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
     </script>
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
